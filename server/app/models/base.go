@@ -46,6 +46,7 @@ func init() {
 		user_id INTEGER,
 		create_date TIMESTAMP,
 		update_date TIMESTAMP,
+		bought_date DATE,
 		category TEXT,
 		content TEXT,
 		jpy DOUBLE PRECISION,

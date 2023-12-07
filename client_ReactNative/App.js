@@ -1,12 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import { Alert, Button, StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+// import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import dbApi from './api/dbApi';
 import HomeScreen from './HomeScreen';
 import UserScreen from './UserScreen';
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+// const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (

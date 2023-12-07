@@ -12,6 +12,7 @@ type Todo struct {
 	UserID int
 	CreateDate time.Time
 	UpdateDate time.Time
+	BoughtDate string
 	Category string
 	Content string
 	Jpy float64
@@ -27,13 +28,14 @@ func (t *Todo) CreateTodo() (err error) {
 		user_id,
 		create_date,
 		update_date,
+		bought_date,
 		category,
 		content,
 		jpy,
 		krw,
-		at_jp) values ($1, $2, $3,$4,$5,$6,$7,$8)`
+		at_jp) values ($1, $2, $3,$4,$5,$6,$7,$8,$9)`
 
-	_, err = Db.Exec(cmd, t.UserID,time.Now(),time.Now(),t.Category,t.Content,t.Jpy,t.Krw,t.AtJp)
+	_, err = Db.Exec(cmd, t.UserID,time.Now(),time.Now(),t.BoughtDate,t.Category,t.Content,t.Jpy,t.Krw,t.AtJp)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -45,7 +47,7 @@ func GetTodo(id int) ([]Todo, error)  {
 	var todos []Todo
 	psql := sq.StatementBuilder.PlaceholderFormat(sq.Dollar)
 
-	sql, args, err := psql.Select("*").From(tablename).Where(sq.Eq{"user_id":id}).ToSql()
+	sql, args, err := psql.Select("*").From(tablename).Where(sq.Eq{"user_id":id}).OrderBy("bought_date").ToSql()
 	if err != nil {
 		return nil, err
 	}
@@ -58,7 +60,7 @@ func GetTodo(id int) ([]Todo, error)  {
 
 	for rows.Next() {
 		var todo Todo
-		err = rows.Scan(&todo.ID,&todo.UserID,&todo.CreateDate,&todo.UpdateDate,&todo.Category, &todo.Content, &todo.Jpy, &todo.Krw,&todo.AtJp)
+		err = rows.Scan(&todo.ID,&todo.UserID,&todo.CreateDate,&todo.UpdateDate,&todo.BoughtDate,&todo.Category, &todo.Content, &todo.Jpy, &todo.Krw,&todo.AtJp)
 		if err != nil {
 			return nil, err
 		}
@@ -78,7 +80,7 @@ func GetAllTodo() ([]Todo, error)  {
 	var todos []Todo
 	psql := sq.StatementBuilder.PlaceholderFormat(sq.Dollar)
 
-	sql, args, err := psql.Select("*").From(tablename).ToSql()
+	sql, args, err := psql.Select("*").From(tablename).OrderBy("bought_date").ToSql()
 	if err != nil {
 		return nil, err
 	}
@@ -91,7 +93,7 @@ func GetAllTodo() ([]Todo, error)  {
 
 	for rows.Next() {
 		var todo Todo
-		err = rows.Scan(&todo.ID,&todo.UserID,&todo.CreateDate,&todo.UpdateDate,&todo.Category, &todo.Content, &todo.Jpy, &todo.Krw,&todo.AtJp)
+		err = rows.Scan(&todo.ID,&todo.UserID,&todo.CreateDate,&todo.UpdateDate,&todo.BoughtDate,&todo.Category, &todo.Content, &todo.Jpy, &todo.Krw,&todo.AtJp)
 		if err != nil {
 			return nil, err
 		}

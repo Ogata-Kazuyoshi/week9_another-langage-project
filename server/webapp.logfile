@@ -265,3 +265,7 @@ created by net/http.(*Server).Serve in goroutine 1
 2023/12/07 18:13:57 memos.go:38: pq: column "created_at" of relation "memos" does not exist
 2023/12/07 18:15:50 memos.go:38: pq: column "created_date" of relation "memos" does not exist
 2023/12/07 18:23:02 main.go:17: tets
+2023/12/07 20:30:38 main.go:17: tets
+2023/12/07 21:58:25 main.go:17: tets
+2023/12/07 22:14:27 main.go:17: tets
+2023/12/07 22:15:25 main.go:17: tets
