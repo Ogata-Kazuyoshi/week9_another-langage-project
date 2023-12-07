@@ -245,3 +245,18 @@ created by net/http.(*Server).Serve in goroutine 1
 2023/12/07 12:38:39 main.go:17: tets
 2023/12/07 12:44:14 main.go:17: tets
 2023/12/07 13:05:06 main.go:17: tets
+2023/12/07 14:30:51 main.go:17: tets
+2023/12/07 14:58:45 main.go:17: tets
+2023/12/07 15:17:51 main.go:17: tets
+2023/12/07 15:25:11 main.go:17: tets
+2023/12/07 15:29:04 main.go:17: tets
+2023/12/07 15:39:57 main.go:17: tets
+2023/12/07 15:40:33 todos.go:115: pq: column "userid" of relation "todos" does not exist
+2023/12/07 15:40:48 main.go:17: tets
+2023/12/07 15:40:52 todos.go:115: pq: column "userid" of relation "todos" does not exist
+2023/12/07 15:43:29 main.go:17: tets
+2023/12/07 15:44:10 main.go:17: tets
+2023/12/07 15:44:44 main.go:17: tets
+2023/12/07 15:53:15 main.go:17: tets
+2023/12/07 15:54:34 main.go:17: tets
+2023/12/07 16:04:15 main.go:17: tets
