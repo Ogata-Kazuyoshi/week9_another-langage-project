@@ -45,7 +45,7 @@ func GetTodo(id int) ([]Todo, error)  {
 	var todos []Todo
 	psql := sq.StatementBuilder.PlaceholderFormat(sq.Dollar)
 
-	sql, args, err := psql.Select("*").From(tablename).Where(sq.Eq{"id":id}).ToSql()
+	sql, args, err := psql.Select("*").From(tablename).Where(sq.Eq{"user_id":id}).ToSql()
 	if err != nil {
 		return nil, err
 	}
