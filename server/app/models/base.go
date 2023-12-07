@@ -1,8 +1,10 @@
 package models
 
 import (
+	"crypto/rand"
 	"crypto/sha1"
 	"database/sql"
+	"encoding/base64"
 	"fmt"
 	"log"
 	"todoapp/config"
@@ -18,21 +20,20 @@ var err error
 
 const (
 	tableNameUser = "users"
-	tableNameTodo = "todos"
+	tableNameMemo = "memos"
 )
 
 func init() {
-	Db,err = sql.Open(config.Config.SQLDriver,fmt.Sprintf("user=user  dbname=go_todo sslmode=disable"))
+	Db,err = sql.Open(config.Config.SQLDriver,fmt.Sprintf(`user=user  dbname=` + config.Config.DbName + ` sslmode=disable`))
 	if err != nil {
 		log.Fatalln(err)
 	}
 	
 	cmdU := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
 		id SERIAL PRIMARY KEY,
-		uuid TEXT NOT NULL UNIQUE,
-		name TEXT,
-		email TEXT,
-		password TEXT,
+		user_name TEXT,
+		salt TEXT,
+		hashed_password TEXT,
 		created_at TIMESTAMP)`,tableNameUser)
 
 	_, err = Db.Exec(cmdU)
@@ -42,9 +43,14 @@ func init() {
 
 	cmdT := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
 		id SERIAL PRIMARY KEY,
-		content TEXT,
 		user_id INTEGER,
-		created_at TIMESTAMP)`,tableNameTodo)
+		create_date TIMESTAMP,
+		update_date TIMESTAMP,
+		category TEXT,
+		content TEXT,
+		jpy DOUBLE PRECISION,
+		krw DOUBLE PRECISION,
+		at_jp BOOLEAN)`,tableNameMemo)
 
 	_, err = Db.Exec(cmdT)
 	if err != nil {
@@ -63,4 +69,13 @@ func Encrypt(plaintext string) (cryptext string) {
 	cryptext =fmt.Sprintf("%x", sha1.Sum([]byte(plaintext)))
 	fmt.Println("cryptext : ",cryptext)
 	return cryptext
+}
+
+func AddSalt() (string) {
+	salt := make([]byte, 16)
+	_, err := rand.Read(salt)
+	if err != nil {
+		return ""
+	}
+	return base64.StdEncoding.EncodeToString(salt)
 }

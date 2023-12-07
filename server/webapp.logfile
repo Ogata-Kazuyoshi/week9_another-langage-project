@@ -260,3 +260,7 @@ created by net/http.(*Server).Serve in goroutine 1
 2023/12/07 15:53:15 main.go:17: tets
 2023/12/07 15:54:34 main.go:17: tets
 2023/12/07 16:04:15 main.go:17: tets
+2023/12/07 18:09:17 base.go:41: pq: syntax error at or near "hashed_password"
+2023/12/07 18:11:05 base.go:57: pq: syntax error at or near ")"
+2023/12/07 18:13:57 memos.go:38: pq: column "created_at" of relation "memos" does not exist
+2023/12/07 18:15:50 memos.go:38: pq: column "created_date" of relation "memos" does not exist

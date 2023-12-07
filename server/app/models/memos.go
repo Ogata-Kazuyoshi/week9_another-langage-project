@@ -9,21 +9,31 @@ import (
 
 type Todo struct {
 	ID int
-	Content string
 	UserID int
-	CreatedAt time.Time
+	CreateDate time.Time
+	UpdateDate time.Time
+	Category string
+	Content string
+	Jpy float64
+	Krw float64
+	AtJp bool
 }
 
-var tabletodo string =  "todos"
+var tablename string =  "memos"
 
 //新規作成用 これは(t *Todo)をつけてるので、Userとしてのメソッドに組み込む。理由はUserの型で存在して欲しいから
 func (t *Todo) CreateTodo() (err error) {
-	cmd := `insert into ` + tabletodo + ` (
-		content,
+	cmd := `insert into ` + tablename + ` (
 		user_id,
-		created_at) values ($1, $2, $3)`
+		create_date,
+		update_date,
+		category,
+		content,
+		jpy,
+		krw,
+		at_jp) values ($1, $2, $3,$4,$5,$6,$7,$8)`
 
-	_, err = Db.Exec(cmd, t.Content , t.UserID,time.Now())
+	_, err = Db.Exec(cmd, t.UserID,time.Now(),time.Now(),t.Category,t.Content,t.Jpy,t.Krw,t.AtJp)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -35,7 +45,7 @@ func GetTodo(id int) ([]Todo, error)  {
 	var todos []Todo
 	psql := sq.StatementBuilder.PlaceholderFormat(sq.Dollar)
 
-	sql, args, err := psql.Select("*").From(tabletodo).Where(sq.Eq{"id":id}).ToSql()
+	sql, args, err := psql.Select("*").From(tablename).Where(sq.Eq{"id":id}).ToSql()
 	if err != nil {
 		return nil, err
 	}
@@ -48,7 +58,7 @@ func GetTodo(id int) ([]Todo, error)  {
 
 	for rows.Next() {
 		var todo Todo
-		err = rows.Scan(&todo.ID, &todo.Content, &todo.UserID, &todo.CreatedAt)
+		err = rows.Scan(&todo.ID,&todo.UserID,&todo.CreateDate,&todo.UpdateDate,&todo.Category, &todo.Content, &todo.Jpy, &todo.Krw,&todo.AtJp)
 		if err != nil {
 			return nil, err
 		}
@@ -68,7 +78,7 @@ func GetAllTodo() ([]Todo, error)  {
 	var todos []Todo
 	psql := sq.StatementBuilder.PlaceholderFormat(sq.Dollar)
 
-	sql, args, err := psql.Select("*").From(tabletodo).ToSql()
+	sql, args, err := psql.Select("*").From(tablename).ToSql()
 	if err != nil {
 		return nil, err
 	}
@@ -81,7 +91,7 @@ func GetAllTodo() ([]Todo, error)  {
 
 	for rows.Next() {
 		var todo Todo
-		err = rows.Scan(&todo.ID, &todo.Content, &todo.UserID, &todo.CreatedAt)
+		err = rows.Scan(&todo.ID,&todo.UserID,&todo.CreateDate,&todo.UpdateDate,&todo.Category, &todo.Content, &todo.Jpy, &todo.Krw,&todo.AtJp)
 		if err != nil {
 			return nil, err
 		}
@@ -100,7 +110,7 @@ func GetAllTodo() ([]Todo, error)  {
 func (t *Todo) UpdateTodo(id int, updates map[string]interface{}) {
 	psql := sq.StatementBuilder.PlaceholderFormat(sq.Dollar)
 	
-	update := psql.Update(tabletodo)
+	update := psql.Update(tablename)
 	for column, value := range updates {
 		update = update.Set(column, value)
 	}
@@ -119,7 +129,7 @@ func (t *Todo) UpdateTodo(id int, updates map[string]interface{}) {
 //該当するIdのデータを削除するよう これは(t *Todo)をつけていないので、単なる関数として呼び出し可能。idさえ指定したら一意に決めれる
 func  DeleteTodo(id int) {
 	psql := sq.StatementBuilder.PlaceholderFormat(sq.Dollar)
-	sql, args, err := psql.Delete(tabletodo).Where(sq.Eq{"id": id}).ToSql()
+	sql, args, err := psql.Delete(tablename).Where(sq.Eq{"id": id}).ToSql()
 	if err != nil {
 		log.Fatalln(err)
 	}
