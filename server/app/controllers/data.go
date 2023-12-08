@@ -12,7 +12,8 @@ import (
 )
 
 func enableCors(w http.ResponseWriter) {
-	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173")
+	// w.Header().Set("Access-Control-Allow-Origin", "http://localhost:5173")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 }
 
 func dataHandler(w http.ResponseWriter, r *http.Request) { //パスパラメータの有無でエンドポイント分けれないので、無理やりURLを解析する。

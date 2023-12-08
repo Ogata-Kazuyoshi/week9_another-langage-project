@@ -52,6 +52,7 @@ func main() {
 			{UserID : 1, Category : "その他" ,BoughtDate:"2023-10-10",Content:"ご褒美" ,Jpy:110 , Krw: 1000 ,AtJp:false},
 			{UserID : 1, Category : "その他" ,BoughtDate:"2023-10-10",Content:"ご褒美" ,Jpy:110 , Krw: 1000 ,AtJp:false},
 			{UserID : 1, Category : "その他" ,BoughtDate:"2023-10-10",Content:"ご褒美" ,Jpy:110 , Krw: 1000 ,AtJp:false},
+			{UserID : 1, Category : "美容" ,BoughtDate:"2023-11-10",Content:"１１月になったので防寒着を買いました。" ,Jpy:1000 , Krw: 10000 ,AtJp:false},
 		}
 
 	

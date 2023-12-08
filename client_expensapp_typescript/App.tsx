@@ -1,7 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import { PieChart } from 'react-native-svg-charts';
-// import { VictoryPie } from 'victory-native';
 import { LogBox } from 'react-native';
 import {
   VictoryBar,
