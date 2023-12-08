@@ -40,6 +40,18 @@ func main() {
 			{UserID : 1, Category : "交際費",BoughtDate:"2023-10-23" ,Content:"飲み会" ,Jpy:110 , Krw: 1000 ,AtJp:false},
 			{UserID : 2, Category : "食費",BoughtDate:"2023-10-03" ,Content:"コンビニ" ,Jpy:110 , Krw: 1000 ,AtJp:false},
 			{UserID : 1, Category : "その他" ,BoughtDate:"2023-10-10",Content:"ご褒美" ,Jpy:110 , Krw: 1000 ,AtJp:false},
+			{UserID : 1, Category : "その他" ,BoughtDate:"2023-10-10",Content:"ご褒美" ,Jpy:110 , Krw: 1000 ,AtJp:false},
+			{UserID : 1, Category : "その他" ,BoughtDate:"2023-10-10",Content:"ご褒美" ,Jpy:110 , Krw: 1000 ,AtJp:false},
+			{UserID : 1, Category : "その他" ,BoughtDate:"2023-10-10",Content:"ご褒美" ,Jpy:110 , Krw: 1000 ,AtJp:false},
+			{UserID : 1, Category : "その他" ,BoughtDate:"2023-10-10",Content:"ご褒美" ,Jpy:110 , Krw: 1000 ,AtJp:false},
+			{UserID : 1, Category : "その他" ,BoughtDate:"2023-10-10",Content:"ご褒美" ,Jpy:110 , Krw: 1000 ,AtJp:false},
+			{UserID : 1, Category : "その他" ,BoughtDate:"2023-10-10",Content:"ご褒美" ,Jpy:110 , Krw: 1000 ,AtJp:false},
+			{UserID : 1, Category : "その他" ,BoughtDate:"2023-10-10",Content:"ご褒美" ,Jpy:110 , Krw: 1000 ,AtJp:false},
+			{UserID : 1, Category : "その他" ,BoughtDate:"2023-10-10",Content:"ご褒美" ,Jpy:110 , Krw: 1000 ,AtJp:false},
+			{UserID : 1, Category : "その他" ,BoughtDate:"2023-10-10",Content:"ご褒美" ,Jpy:110 , Krw: 1000 ,AtJp:false},
+			{UserID : 1, Category : "その他" ,BoughtDate:"2023-10-10",Content:"ご褒美" ,Jpy:110 , Krw: 1000 ,AtJp:false},
+			{UserID : 1, Category : "その他" ,BoughtDate:"2023-10-10",Content:"ご褒美" ,Jpy:110 , Krw: 1000 ,AtJp:false},
+			{UserID : 1, Category : "その他" ,BoughtDate:"2023-10-10",Content:"ご褒美" ,Jpy:110 , Krw: 1000 ,AtJp:false},
 		}
 
 	

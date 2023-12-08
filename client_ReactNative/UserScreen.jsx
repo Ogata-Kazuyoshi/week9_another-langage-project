@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
 import dbApi from './api/dbApi';
+import { IconButton } from 'react-native-paper';
 
 const UserScreen = () => {
   const getAllHandler = async () => {
@@ -53,6 +54,10 @@ const UserScreen = () => {
       },
     ]);
   };
+
+  const clickPlus = () => {};
+  const clickMinus = () => {};
+
   return (
     <View>
       <Text>ユーザー画面</Text>
@@ -61,6 +66,16 @@ const UserScreen = () => {
       <Button title="NewPost" onPress={createNewHandler} />
       <Button title="Update" onPress={updateHandler} />
       <Button title="delete" onPress={deleteHandler} />
+      <Button title="Plus" onPress={clickPlus} />
+      <Button title="Minus" onPress={clickMinus} />
+      <Text>{countValue}</Text>
+      {/* <IconButton
+        icon="account-edit-outline"
+        size={20}
+        onPress={() => {
+          // ボタンが押されたときの処理
+        }}
+      /> */}
     </View>
   );
 };
