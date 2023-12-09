@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Top = () => {
+const Top = (props) => {
+  const { setIsAuth } = props;
   const navigate = useNavigate();
 
   useEffect(() => {
+    setIsAuth(true);
     navigate('personal/main');
   }, []);
   return <div></div>;

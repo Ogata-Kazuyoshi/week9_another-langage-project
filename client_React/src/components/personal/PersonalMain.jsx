@@ -4,8 +4,10 @@ import GraphArea from './personalMain/GraphArea';
 import DisplyanArea from './personalMain/DisplyanArea';
 import dbApi from '../../api/dbApi';
 import { filterMonth } from '../../controllers/controller';
+import { useNavigate } from 'react-router-dom';
 
-const PersonalMain = () => {
+const PersonalMain = (props) => {
+  const { isAuth } = props;
   const [user, SetUser] = useState('中田ともこ');
   const [userId, SetUserId] = useState(1);
   const [currentMonth, setCurrentMonth] = useState(10);
@@ -16,6 +18,13 @@ const PersonalMain = () => {
   const [isModifyModal, setIsModifyModal] = useState(false);
   const [currentContent, setCurrentContent] = useState({});
   const [memoId, setMemoId] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isAuth) {
+      navigate('/');
+    }
+  }, []);
 
   useEffect(() => {
     const getUserData = async () => {
@@ -71,7 +80,7 @@ const styles = {
   },
   monthHeader: {
     flex: '3%',
-    backgroundColor: 'gray',
+    backgroundColor: 'rgb(202, 202, 202)',
     // bordor: '1px solid black',
   },
   mainArea: {
@@ -81,11 +90,11 @@ const styles = {
   },
   graphArea: {
     flex: '40%',
-    backgroundColor: 'pink',
+    backgroundColor: 'rgb(246, 228, 247)',
   },
   dataArea: {
     flex: '60%',
-    backgroundColor: 'aqua',
+    backgroundColor: 'rgb(246, 228, 247)',
     overflow: 'hidden',
   },
 };
