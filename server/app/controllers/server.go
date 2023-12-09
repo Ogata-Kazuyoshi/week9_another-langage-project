@@ -3,6 +3,7 @@ package controllers
 import (
 	"net/http"
 	"os"
+	"todoapp/config"
 )
 
 
@@ -11,9 +12,11 @@ func StartMainServer() error  {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/api/v1/data/", dataHandler)
 
-	//本番環境用
+	//本番環境用 / 開発環境用の切り替えができるようにする
 	port := os.Getenv("PORT")
+	if port == "" {
+		port = config.Config.Port
+	}
 	return http.ListenAndServe(":"+port,mux)
-	//開発環境用
-	// return http.ListenAndServe(":"+config.Config.Port,mux)
+	
 }
