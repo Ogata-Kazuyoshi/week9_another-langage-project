@@ -12,6 +12,7 @@ import (
 
 	"github.com/google/uuid"
 
+	"github.com/joho/godotenv"
 	"github.com/lib/pq"
 	_ "github.com/lib/pq"
 )
@@ -27,14 +28,40 @@ const (
 
 func init() {
 
-	//本番環境用
-	url := os.Getenv("DATABASE_URL")
-	connection, _ := pq.ParseURL(url)
-	connection += "sslmode=require"
-	Db, err = sql.Open(config.Config.SQLDriver,connection)
+	err := godotenv.Load()
 	if err != nil {
-		log.Fatalln(err)
+		log.Fatal("Error loading .env file")
 	}
+
+
+	goEnv := os.Getenv("GO_ENV")
+	fmt.Println("GO_ENV : ",goEnv)
+
+	if goEnv == "production" {
+		//本番環境用
+		url := os.Getenv("DATABASE_URL")
+		connection, _ := pq.ParseURL(url)
+		connection += "sslmode=require"
+		Db, err = sql.Open(config.Config.SQLDriver,connection)
+		if err != nil {
+			log.Fatalln(err)
+		}
+	} else if goEnv == "development" {
+		//下記は開発環境よう
+		Db,err = sql.Open(config.Config.SQLDriver,fmt.Sprintf(`user=user  dbname=` + config.Config.DbName + ` sslmode=disable`))
+		if err != nil {
+			log.Fatalln(err)
+		}
+	}
+
+	//本番環境用
+	// url := os.Getenv("DATABASE_URL")
+	// connection, _ := pq.ParseURL(url)
+	// connection += "sslmode=require"
+	// Db, err = sql.Open(config.Config.SQLDriver,connection)
+	// if err != nil {
+	// 	log.Fatalln(err)
+	// }
 
 	//下記は開発環境よう
 	// Db,err = sql.Open(config.Config.SQLDriver,fmt.Sprintf(`user=user  dbname=` + config.Config.DbName + ` sslmode=disable`))
