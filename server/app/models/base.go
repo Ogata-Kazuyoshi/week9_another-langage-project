@@ -28,6 +28,7 @@ const (
 
 func init() {
 
+	//開発環境で.envファイルを読みにいけるようにするためのLodad()
 	err := godotenv.Load()
 	if err != nil {
 		// log.Fatal("Error loading .env file")
@@ -48,27 +49,14 @@ func init() {
 			log.Fatalln(err)
 		}
 	} else if goEnv == "development" {
-		//下記は開発環境よう
+		//開発環境用
 		Db,err = sql.Open(config.Config.SQLDriver,fmt.Sprintf(`user=user  dbname=` + config.Config.DbName + ` sslmode=disable`))
 		if err != nil {
 			log.Fatalln(err)
 		}
 	}
 
-	//本番環境用
-	// url := os.Getenv("DATABASE_URL")
-	// connection, _ := pq.ParseURL(url)
-	// connection += "sslmode=require"
-	// Db, err = sql.Open(config.Config.SQLDriver,connection)
-	// if err != nil {
-	// 	log.Fatalln(err)
-	// }
 
-	//下記は開発環境よう
-	// Db,err = sql.Open(config.Config.SQLDriver,fmt.Sprintf(`user=user  dbname=` + config.Config.DbName + ` sslmode=disable`))
-	// if err != nil {
-	// 	log.Fatalln(err)
-	// }
 	
 	cmdU := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
 		id SERIAL PRIMARY KEY,
