@@ -20,10 +20,10 @@ var Db *sql.DB
 
 var err error
 
-// const (
-// 	tableNameUser = "users"
-// 	tableNameMemo = "memos"
-// )
+const (
+	tableNameUser = "users"
+	tableNameMemo = "memos"
+)
 
 func init() {
 
@@ -42,34 +42,34 @@ func init() {
 	// 	log.Fatalln(err)
 	// }
 	
-	// cmdU := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
-	// 	id SERIAL PRIMARY KEY,
-	// 	user_name TEXT,
-	// 	salt TEXT,
-	// 	hashed_password TEXT,
-	// 	created_at TIMESTAMP)`,tableNameUser)
+	cmdU := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
+		id SERIAL PRIMARY KEY,
+		user_name TEXT,
+		salt TEXT,
+		hashed_password TEXT,
+		created_at TIMESTAMP)`,tableNameUser)
 
-	// _, err = Db.Exec(cmdU)
-	// if err != nil {
-	// 	log.Fatalln(err)
-	// }
+	_, err = Db.Exec(cmdU)
+	if err != nil {
+		log.Fatalln(err)
+	}
 
-	// cmdT := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
-	// 	id SERIAL PRIMARY KEY,
-	// 	user_id INTEGER,
-	// 	create_date TIMESTAMP,
-	// 	update_date TIMESTAMP,
-	// 	bought_date DATE,
-	// 	category TEXT,
-	// 	content TEXT,
-	// 	jpy DOUBLE PRECISION,
-	// 	krw DOUBLE PRECISION,
-	// 	at_jp BOOLEAN)`,tableNameMemo)
+	cmdT := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
+		id SERIAL PRIMARY KEY,
+		user_id INTEGER,
+		create_date TIMESTAMP,
+		update_date TIMESTAMP,
+		bought_date DATE,
+		category TEXT,
+		content TEXT,
+		jpy DOUBLE PRECISION,
+		krw DOUBLE PRECISION,
+		at_jp BOOLEAN)`,tableNameMemo)
 
-	// _, err = Db.Exec(cmdT)
-	// if err != nil {
-	// 	log.Fatalln(err)
-	// }
+	_, err = Db.Exec(cmdT)
+	if err != nil {
+		log.Fatalln(err)
+	}
 
 }
 
