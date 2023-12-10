@@ -68,7 +68,7 @@ const styles = {
     flex: '40%',
   },
   personal_name: {
-    fontSize: '30px',
+    fontSize: '20px',
     textAlign: 'center',
     marginRight: '10px',
     // border: '2px solid red',
