@@ -18,5 +18,7 @@ func StartMainServer() error  {
 		port = config.Config.Port
 	}
 	return http.ListenAndServe(":"+port,mux)
+
+	// return http.ListenAndServe(":"+ port || config.Config.Port , mux)
 	
 }

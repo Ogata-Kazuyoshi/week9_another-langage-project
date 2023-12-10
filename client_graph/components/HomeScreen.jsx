@@ -18,7 +18,11 @@ const HomeScreen = (props) => {
 
   return (
     <View style={styles.container}>
-      <Text>{`ようこそ、 ${user} さん`}</Text>
+      <View style={{ marginTop: 30 }}>
+        <Text
+          style={{ fontSize: 20, fontWeight: 'bold' }}
+        >{`ようこそ、 ${user} さん`}</Text>
+      </View>
 
       <ScrollView showsVerticalScrollIndicator={false}>
         <CustomButton
