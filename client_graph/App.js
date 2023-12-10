@@ -12,7 +12,7 @@ const Stack = createNativeStackNavigator();
 LogBox.ignoreLogs(['Require cycle: node_modules/victory']);
 
 export default function App() {
-  const [user, SetUser] = useState('中田ともこ');
+  const [user, SetUser] = useState('なかた ともこ');
   const [userId, SetUserId] = useState(1);
   const [currentMonth, setCurrentMonth] = useState(10);
   const [isJpy, setIsJpy] = useState(true);

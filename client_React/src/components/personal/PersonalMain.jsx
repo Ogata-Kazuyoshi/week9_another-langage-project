@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const PersonalMain = (props) => {
   const { isAuth } = props;
-  const [user, SetUser] = useState('中田ともこ');
+  const [user, SetUser] = useState('なかた ともこ');
   const [userId, SetUserId] = useState(1);
   const [currentMonth, setCurrentMonth] = useState(10);
   const [isJpy, setIsJpy] = useState(true);
@@ -42,7 +42,7 @@ const PersonalMain = (props) => {
   return (
     <div style={styles.mainwrap}>
       <div style={styles.monthHeader}>
-        <MonthHeader />
+        <MonthHeader user={user} />
       </div>
       <div style={styles.mainArea}>
         <div style={styles.graphArea}>

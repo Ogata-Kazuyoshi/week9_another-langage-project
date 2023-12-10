@@ -4,7 +4,7 @@ import SkipNextIcon from '@mui/icons-material/SkipNext';
 import SettingsIcon from '@mui/icons-material/Settings';
 import '../../../App.css';
 
-const MonthHeader = () => {
+const MonthHeader = ({ user }) => {
   return (
     <div style={styles.headerwrap}>
       <div style={styles.vacant}></div>
@@ -19,7 +19,7 @@ const MonthHeader = () => {
       </div>
       <div style={styles.personalsetting}>
         <div style={styles.personal_vacant}></div>
-        <div style={styles.personal_name}>中田ともこ</div>
+        <div style={styles.personal_name}>{user}</div>
         <div style={styles.personal_setting}>
           <SettingsIcon style={styles.personal_setting_icon} />
         </div>
