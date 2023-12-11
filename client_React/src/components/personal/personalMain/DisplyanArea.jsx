@@ -200,7 +200,7 @@ const styles = {
   },
   datatable: {
     // border: '1px solid black',
-    width: '80%',
+    width: '90%',
     marginTop: '20px',
     height: '97%',
     display: 'flex',
@@ -213,12 +213,12 @@ const styles = {
   },
   shortcontent: {
     border: '1px solid black',
-    width: '150px',
+    width: '120px',
     height: '100%',
   },
   longcontent: {
     border: '1px solid black',
-    width: '440px',
+    width: '350px',
     height: '100%',
   },
   dataContent: {
