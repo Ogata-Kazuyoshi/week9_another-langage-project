@@ -200,7 +200,7 @@ const styles = {
   },
   datatable: {
     // border: '1px solid black',
-    width: '90%',
+    width: '740px',
     marginTop: '20px',
     height: '97%',
     display: 'flex',
