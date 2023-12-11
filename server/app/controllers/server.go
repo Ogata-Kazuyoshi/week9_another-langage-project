@@ -19,7 +19,7 @@ func StartMainServer() error  {
 	e.GET("/personal/main", func(c echo.Context) error {
 		return c.Redirect(http.StatusMovedPermanently, "/")
 	})
-
+ 
 	//本番環境用 / 開発環境用の切り替えができるようにする
 	port := os.Getenv("PORT")
 	if port == "" {
